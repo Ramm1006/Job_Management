@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node src/app.ts",
     "dev": "nodemon src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "vercel-build": "echo hello"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -23,5 +24,23 @@
     "nodemon": "^2.0.12",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "vercel": {
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/app.ts",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "src/app.ts"
+      }
+    ]
   }
 }
