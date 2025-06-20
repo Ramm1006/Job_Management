@@ -42,6 +42,7 @@
         "dest": "dist/app.js"
       }
     ],
-    "outputDirectory": "dist"
+    "outputDirectory": "dist",
+    "rootDirectory": "server"
   }
 }
