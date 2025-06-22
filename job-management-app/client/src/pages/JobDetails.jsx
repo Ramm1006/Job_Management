@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Job } from '../types';
 import EditJobForm from '../components/EditJobForm';
 
-const JobDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+const JobDetails = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [job, setJob] = useState<Job | null>(null);
+  const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const role = localStorage.getItem('role');
 
@@ -42,7 +41,7 @@ const JobDetails: React.FC = () => {
     setIsEditing(true);
   };
 
-  const handleUpdate = async (updatedData: Job) => {
+  const handleUpdate = async (updatedData) => {
     try {
       const response = await fetch(`http://localhost:5000/api/jobs/${id}`, {
         method: 'PUT',
@@ -100,7 +99,7 @@ const JobDetails: React.FC = () => {
           <div className="requirements">
             <h3>Requirements</h3>
             <ul>
-              {job.requirements?.map((req, index) => (
+              {job.requirements && job.requirements.map((req, index) => (
                 <li key={index}>{req}</li>
               ))}
             </ul>

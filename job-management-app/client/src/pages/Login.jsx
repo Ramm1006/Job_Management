@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { LoginData } from '../types';
 
-const Login: React.FC = () => {
+const Login = () => {
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState<LoginData>({
+  const [credentials, setCredentials] = useState({
     email: '',
     password: ''
   });
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);

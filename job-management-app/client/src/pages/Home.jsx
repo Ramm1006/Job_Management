@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import JobList from '../components/JobList';
-import { Job, SearchFilters } from '../types';
 
-const Home: React.FC = () => {
-  const [jobs, setJobs] = useState<Job[]>([]);
+const Home = () => {
+  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
-  const fetchJobs = async (filters?: SearchFilters) => {
+  const fetchJobs = async (filters) => {
     try {
       setLoading(true);
       const queryParams = new URLSearchParams();

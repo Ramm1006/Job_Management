@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import { Job } from '../types';
 
-interface Props {
-  job: Job;
-  onSubmit: (updatedJob: Job) => void;
-  onCancel: () => void;
-}
+const EditJobForm = ({ job, onSubmit, onCancel }) => {
+  const [formData, setFormData] = useState(job);
 
-const EditJobForm: React.FC<Props> = ({ job, onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState<Job>(job);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
   };
@@ -55,7 +48,7 @@ const EditJobForm: React.FC<Props> = ({ job, onSubmit, onCancel }) => {
         <select
           id="type"
           value={formData.type}
-          onChange={e => setFormData({ ...formData, type: e.target.value as Job['type'] })}
+          onChange={e => setFormData({ ...formData, type: e.target.value })}
         >
           <option value="full-time">Full Time</option>
           <option value="part-time">Part Time</option>

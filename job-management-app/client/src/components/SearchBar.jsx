@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
-import { SearchFilters } from '../types';
 
-interface Props {
-  onSearch: (filters: SearchFilters) => void;
-}
-
-const SearchBar: React.FC<Props> = ({ onSearch }) => {
-  const [filters, setFilters] = useState<SearchFilters>({
+const SearchBar = ({ onSearch }) => {
+  const [filters, setFilters] = useState({
     query: '',
     type: '',
     location: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(filters);
   };
 
   const handleReset = () => {
-    const emptyFilters: SearchFilters = {
+    const emptyFilters = {
       query: '',
       type: '',
       location: ''

@@ -7,25 +7,25 @@ import PostJob from './pages/PostJob';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   if (!token) return <Navigate to="/signup" />;
   return <>{children}</>;
 };
 
-const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const role = localStorage.getItem('role');
   if (role !== 'admin') return <Navigate to="/" />;
   return <>{children}</>;
 };
 
-const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const PublicRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   if (token) return <Navigate to="/" />;
   return <>{children}</>;
 };
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Router>
       <div className="app">
