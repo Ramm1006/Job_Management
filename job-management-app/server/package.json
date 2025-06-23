@@ -1,11 +1,10 @@
 {
   "name": "job-management-server",
   "version": "1.0.0",
-  "main": "dist/app.js",
+  "main": "app.js",
   "scripts": {
     "build": "echo 'No build step needed for JS'",
-    "start": "node dist/app.js",
-    "dev": "node dist/app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
