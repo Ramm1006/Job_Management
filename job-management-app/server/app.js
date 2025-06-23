@@ -9,16 +9,19 @@ const cors_1 = __importDefault(require("cors"));
 const jobs_1 = __importDefault(require("./routes/jobs"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)({
-    origin: process.env.NODE_ENV === 'production'
-        ? 'https://your-frontend-url.vercel.app'
-        : 'http://localhost:3000'
-}));
+app.use(
+  (0, cors_1.default)({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://job-management-cwnu.vercel.app/"
+        : "http://localhost:3000",
+  })
+);
 app.use(express_1.default.json());
 // Use MongoDB Atlas URI in production
 const MONGODB_URI =
   process.env.MONGODB_URI ||
-  "mongodb+srv://Ramm:Ramm1234@cluster0.mongodb.net/job-management?retryWrites=true&w=majority";
+"mongodb://Ramm:Ramm1234@ac-xyz-shard-00-00.mongodb.net:27017,ac-xyz-shard-00-01.mongodb.net:27017,ac-xyz-shard-00-02.mongodb.net:27017/job-management?ssl=true&replicaSet=atlas-xyz-shard-0&authSource=admin&retryWrites=true&w=majority";
 mongoose_1.default.connect(MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
