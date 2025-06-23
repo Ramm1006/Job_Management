@@ -16,7 +16,9 @@ app.use((0, cors_1.default)({
 }));
 app.use(express_1.default.json());
 // Use MongoDB Atlas URI in production
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/job-management';
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://nsrammkumaran@gmail.com:R1a2m!m@@cluster0.mongodb.net/job-management?retryWrites=true&w=majority";
 mongoose_1.default.connect(MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
